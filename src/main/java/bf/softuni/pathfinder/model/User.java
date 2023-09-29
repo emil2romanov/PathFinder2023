@@ -2,6 +2,7 @@ package bf.softuni.pathfinder.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,6 +18,9 @@ public class User extends BaseEntity {
     @Column(name = "full_name")
     private String fullName;
 
+    @Column(name = "age")
+    private Integer age;
+
     @Column(name = "email", unique = true)
     private String email;
 
@@ -24,15 +28,16 @@ public class User extends BaseEntity {
     @JoinTable(
             name = "users_roles",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+            inverseJoinColumns = {@JoinColumn(name = "roles_id", referencedColumnName = "id")}
     )
-    private Set<Role> role;
+    private Set<Role> roles;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "level")
     private Level level;
 
     public User() {
+        this.roles = new HashSet<>();
     }
 
     public String getUsername() {
@@ -59,6 +64,14 @@ public class User extends BaseEntity {
         this.fullName = fullName;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -67,12 +80,12 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    public Set<Role> getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Set<Role> role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public Level getLevel() {
