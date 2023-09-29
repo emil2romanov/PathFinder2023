@@ -29,6 +29,7 @@ public class User extends BaseEntity {
     private Set<Role> role;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "level")
     private Level level;
 
     public User() {
