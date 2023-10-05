@@ -1,4 +1,4 @@
-package bf.softuni.pathfinder.model;
+package bf.softuni.pathfinder.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

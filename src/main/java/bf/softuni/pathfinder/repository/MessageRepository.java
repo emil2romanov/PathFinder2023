@@ -1,6 +1,6 @@
 package bf.softuni.pathfinder.repository;
 
-import bf.softuni.pathfinder.model.Message;
+import bf.softuni.pathfinder.model.entity.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

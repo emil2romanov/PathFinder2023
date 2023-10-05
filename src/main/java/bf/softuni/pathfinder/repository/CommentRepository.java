@@ -1,6 +1,6 @@
 package bf.softuni.pathfinder.repository;
 
-import bf.softuni.pathfinder.model.Comment;
+import bf.softuni.pathfinder.model.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package bf.softuni.pathfinder.model;
+package bf.softuni.pathfinder.model.entity;
 
 import bf.softuni.pathfinder.model.enums.CategoryNames;
 import jakarta.persistence.*;

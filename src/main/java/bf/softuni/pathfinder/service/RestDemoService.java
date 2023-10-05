@@ -1,6 +1,6 @@
 package bf.softuni.pathfinder.service;
 
-import bf.softuni.pathfinder.model.User;
+import bf.softuni.pathfinder.model.entity.User;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package bf.softuni.pathfinder.web;
 
-import bf.softuni.pathfinder.model.User;
+import bf.softuni.pathfinder.model.entity.User;
 import bf.softuni.pathfinder.service.RestDemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
