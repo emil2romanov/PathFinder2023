@@ -1,4 +1,4 @@
-package bf.softuni.pathfinder.model;
+package bf.softuni.pathfinder.model.enums;
 
 public enum CategoryNames {
     PEDESTRIAN,

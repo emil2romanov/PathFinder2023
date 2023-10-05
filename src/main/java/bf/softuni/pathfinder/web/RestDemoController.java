@@ -1,7 +1,8 @@
 package bf.softuni.pathfinder.web;
 
 import bf.softuni.pathfinder.model.User;
-import bf.softuni.pathfinder.service.UserService;
+import bf.softuni.pathfinder.service.RestDemoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,11 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class RestDemoController {
 
-    private final UserService userService;
+    private RestDemoService userService;
 
-    public UserController(UserService userService) {
+    @Autowired
+    public void setRestDemoService(RestDemoService userService) {
         this.userService = userService;
     }
 

@@ -1,5 +1,6 @@
 package bf.softuni.pathfinder.model;
 
+import bf.softuni.pathfinder.model.enums.Level;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
