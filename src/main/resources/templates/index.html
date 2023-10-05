@@ -20,43 +20,9 @@
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-    <header>
-    <nav class="main-nav">
-        <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a th:href="@{/users/login}">Login</a>
-                </li>
-                <li>
-                    <a th:href="@{/users/register}">Register</a>
-                </li>
-                <li>
-                    <a href="/">About</a>
-                </li>
-				<li>
-                    <a href="/">Add new route</a>
-                </li>
-                <li>
-                    <a href="/">Profile</a>
-                </li>
-                <li>
-                    <a href="/">Admin</a>
-                </li>
-                <li>
-                    <!--<form th:action="@{users/logout}" method="POST">
-                        <input type="submit" value="Logout" />
-                    </form>-->
+    <div th:replace="~{fragments/navbar}"></div>
 
-                    <a th:href="@{/users/logout}">Logout</a>
-                </li>
-                <li>
-                    <th:block th:text="${@loggedUser.username} == null ? 'no user' : ${@loggedUser.username}"></th:block>
-                </li>
-        </ul>
-    </nav>
-</header>
+
     <!-- Top Container -->
     <section class="top-container">
         <div class="showcase">
