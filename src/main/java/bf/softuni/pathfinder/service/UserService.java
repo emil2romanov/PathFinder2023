@@ -1,10 +1,8 @@
 package bf.softuni.pathfinder.service;
 
-import bf.softuni.pathfinder.model.User;
-
-import java.util.List;
+import bf.softuni.pathfinder.model.dto.UserRegisterBindingModel;
 
 public interface UserService {
 
-    List<User> getAll();
+    void register(UserRegisterBindingModel userRegisterBindingModel);
 }

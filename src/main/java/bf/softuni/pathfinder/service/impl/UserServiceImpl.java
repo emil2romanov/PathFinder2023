@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(UserRegisterBindingModel userRegisterBindingModel) {
-        User user = new User();
+        User user = modelMapper.map(userRegisterBindingModel, User.class);
 
-
+        userRepository.save(user);
     }
 }

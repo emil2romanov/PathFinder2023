@@ -1,6 +1,7 @@
 package bf.softuni.pathfinder.web;
 
 import bf.softuni.pathfinder.model.dto.UserRegisterBindingModel;
+import bf.softuni.pathfinder.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/users")
 public class UsersController {
+
+    private final UserService userService;
+
+    public UsersController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/login")
     public ModelAndView login() {
@@ -24,6 +31,8 @@ public class UsersController {
     @PostMapping ("/register")
     public ModelAndView register(UserRegisterBindingModel userRegisterBindingModel) {
 
-        return new ModelAndView("register");
+        this.userService.register(userRegisterBindingModel);
+
+        return new ModelAndView("redirect:login");
     }
 }
