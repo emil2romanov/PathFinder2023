@@ -53,4 +53,9 @@ public class UserServiceImpl implements UserService {
 
         return passwordMatch;
     }
+
+    @Override
+    public void logout() {
+        loggedUser.reset();
+    }
 }

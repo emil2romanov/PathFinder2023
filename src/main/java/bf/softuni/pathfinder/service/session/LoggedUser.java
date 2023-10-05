@@ -35,4 +35,10 @@ public class LoggedUser {
         this.fullName = fullName;
         return this;
     }
+
+    public void reset() {
+        setUsername(null);
+        setEmail(null);
+        setFullName(null);
+    }
 }

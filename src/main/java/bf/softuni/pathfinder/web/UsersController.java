@@ -40,11 +40,19 @@ public class UsersController {
         return new ModelAndView("register");
     }
 
-    @PostMapping ("/register")
+    @PostMapping("/register")
     public ModelAndView register(UserRegisterBindingModel userRegisterBindingModel) {
 
         this.userService.register(userRegisterBindingModel);
 
         return new ModelAndView("redirect:login");
+    }
+
+    // TODO: change to Post
+    @GetMapping("/logout")
+    public ModelAndView logout() {
+        this.userService.logout();
+
+        return new ModelAndView("redirect:/");
     }
 }
