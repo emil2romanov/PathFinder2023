@@ -7,7 +7,7 @@ public enum Level {
     INTERMEDIATE,
     ADVANCED;
 
-    public List<Level> getEnumsAsList() {
+    public static List<Level> getEnumsAsList() {
         return List.of(Level.BEGINNER, Level.INTERMEDIATE, Level.ADVANCED);
     }
 }

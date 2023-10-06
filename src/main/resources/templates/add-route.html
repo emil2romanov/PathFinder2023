@@ -80,8 +80,8 @@
                 <select id="level"
                         name="level"
                         class="custom-select">
-                    <option value="" selected>Select level</option>
-                    <option value="1" text="ADVANCED">Select level</option>
+                    <option value="" selected disabled>Select level</option>
+                    <option th:each="level: ${levels}" th:text="${level}" th:value="${level}">Select level</option>
                 </select>
             </div>
         </div>

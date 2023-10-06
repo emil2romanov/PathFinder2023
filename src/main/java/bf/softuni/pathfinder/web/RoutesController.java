@@ -1,6 +1,7 @@
 package bf.softuni.pathfinder.web;
 
 import bf.softuni.pathfinder.model.dto.AddRouteBindingModel;
+import bf.softuni.pathfinder.model.enums.Level;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,12 @@ public class RoutesController {
 
     @GetMapping("/add")
     public ModelAndView addRoute() {
-        return new ModelAndView("add-route");
+
+        ModelAndView modelAndView = new ModelAndView("add-route");
+
+        modelAndView.addObject("levels", Level.getEnumsAsList());
+
+        return modelAndView;
     }
 
     @PostMapping("/add")
