@@ -1,6 +1,9 @@
 package bf.softuni.pathfinder.model.dto;
 
+import bf.softuni.pathfinder.model.enums.CategoryNames;
 import bf.softuni.pathfinder.model.enums.Level;
+
+import java.util.Set;
 
 public class AddRouteBindingModel {
 
@@ -9,6 +12,7 @@ public class AddRouteBindingModel {
     //private String gpxCoordinates;
     private Level level;
     private String videoUrl;
+    private Set<CategoryNames> categories;
 
     public String getName() {
         return name;
@@ -52,6 +56,15 @@ public class AddRouteBindingModel {
 
     public AddRouteBindingModel setVideoUrl(String videoUrl) {
         this.videoUrl = videoUrl;
+        return this;
+    }
+
+    public Set<CategoryNames> getCategories() {
+        return categories;
+    }
+
+    public AddRouteBindingModel setCategories(Set<CategoryNames> categories) {
+        this.categories = categories;
         return this;
     }
 }
