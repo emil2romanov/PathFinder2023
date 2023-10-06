@@ -91,4 +91,8 @@ public class Route extends BaseEntity{
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
+
+    public void addCategories(Set<Category> categories) {
+        this.categories.addAll(categories);
+    }
 }
