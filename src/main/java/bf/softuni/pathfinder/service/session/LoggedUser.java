@@ -1,55 +1,68 @@
 package bf.softuni.pathfinder.service.session;
 
+import bf.softuni.pathfinder.model.entity.Role;
+import bf.softuni.pathfinder.model.enums.UserRoles;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class LoggedUser {
 
     private String username;
-    private String email;
-    private String fullName;
+    private Set<Role> roles;
     private boolean isLogged;
 
-    public String getUsername() {
+    public LoggedUser () {
+
+        this.roles = new HashSet<>();
+    }
+
+    public void reset() {
+        this
+                .setUsername(null)
+                .setRoles(Collections.emptySet())
+                .setLogged(false);
+    }
+
+    public String getUsername () {
+
         return username;
     }
 
-    public LoggedUser setUsername(String username) {
+    public LoggedUser setUsername (String username) {
+
         this.username = username;
         return this;
     }
 
-    public String getEmail() {
-        return email;
+    public Set<Role> getRoles () {
+
+        return roles;
     }
 
-    public LoggedUser setEmail(String email) {
-        this.email = email;
+    public LoggedUser setRoles (Set<Role> roles) {
+
+        this.roles = roles;
         return this;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
+    public boolean isLogged () {
 
-    public LoggedUser setFullName(String fullName) {
-        this.fullName = fullName;
-        return this;
-    }
-
-    public boolean isLogged() {
         return isLogged;
     }
 
-    public LoggedUser setLogged(boolean logged) {
+    public LoggedUser setLogged (boolean logged) {
+
         isLogged = logged;
         return this;
     }
 
-    public void reset() {
-        setUsername(null);
-        setEmail(null);
-        setFullName(null);
-        setLogged(false);
+    public boolean isAdmin () {
+
+        return this.roles.stream()
+                .anyMatch(role -> role.getName().equals(UserRoles.ADMIN));
     }
 }

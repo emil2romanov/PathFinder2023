@@ -2,7 +2,6 @@ package bf.softuni.pathfinder.service.impl;
 
 import bf.softuni.pathfinder.model.entity.User;
 import bf.softuni.pathfinder.repository.UserRepository;
-import bf.softuni.pathfinder.service.RestDemoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
