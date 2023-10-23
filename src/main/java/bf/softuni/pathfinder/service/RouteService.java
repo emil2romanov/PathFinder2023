@@ -1,6 +1,6 @@
 package bf.softuni.pathfinder.service;
 
-import bf.softuni.pathfinder.model.dto.AddRouteBindingModel;
+import bf.softuni.pathfinder.model.dto.binding.AddRouteBindingModel;
 
 public interface RouteService {
 

@@ -1,6 +1,6 @@
 package bf.softuni.pathfinder.service.impl;
 
-import bf.softuni.pathfinder.model.dto.AddRouteBindingModel;
+import bf.softuni.pathfinder.model.dto.binding.AddRouteBindingModel;
 import bf.softuni.pathfinder.model.entity.Category;
 import bf.softuni.pathfinder.model.entity.Route;
 import bf.softuni.pathfinder.model.entity.User;

@@ -1,8 +1,6 @@
 package bf.softuni.pathfinder.web;
 
-import bf.softuni.pathfinder.model.dto.AddRouteBindingModel;
-import bf.softuni.pathfinder.model.enums.CategoryNames;
-import bf.softuni.pathfinder.model.enums.Level;
+import bf.softuni.pathfinder.model.dto.binding.AddRouteBindingModel;
 import bf.softuni.pathfinder.service.RouteService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

@@ -1,18 +1,35 @@
-package bf.softuni.pathfinder.model.dto;
+package bf.softuni.pathfinder.model.dto.binding;
 
+import bf.softuni.pathfinder.model.entity.User;
 import bf.softuni.pathfinder.model.enums.CategoryNames;
 import bf.softuni.pathfinder.model.enums.Level;
+import jakarta.validation.constraints.Size;
 
 import java.util.Set;
 
 public class AddRouteBindingModel {
 
+    @Size(min = 3, message = "Name length must be more than 3 characters")
     private String name;
+    @Size(min = 5, message = "Description length must be more than 5 characters")
     private String description;
-    //private String gpxCoordinates;
     private Level level;
     private String videoUrl;
+    private User author;
     private Set<CategoryNames> categories;
+
+    public AddRouteBindingModel() {
+
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public AddRouteBindingModel setAuthor(User author) {
+        this.author = author;
+        return this;
+    }
 
     public String getName() {
         return name;
@@ -31,15 +48,6 @@ public class AddRouteBindingModel {
         this.description = description;
         return this;
     }
-
-   /* public String getGpxCoordinates() {
-        return gpxCoordinates;
-    }
-
-    public AddRouteBindingModel setGpxCoordinates(String gpxCoordinates) {
-        this.gpxCoordinates = gpxCoordinates;
-        return this;
-    }*/
 
     public Level getLevel() {
         return level;

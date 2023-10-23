@@ -1,8 +1,10 @@
 package bf.softuni.pathfinder.config;
 
+import bf.softuni.pathfinder.model.entity.User;
 import bf.softuni.pathfinder.repository.UserRepository;
 import bf.softuni.pathfinder.service.session.LoggedUser;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.Provider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
