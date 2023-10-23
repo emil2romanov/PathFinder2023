@@ -1,5 +1,6 @@
 package bf.softuni.pathfinder.service.impl;
 
+import bf.softuni.pathfinder.exceptions.LoginCredentialsException;
 import bf.softuni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import bf.softuni.pathfinder.model.entity.User;
 import bf.softuni.pathfinder.model.dto.binding.UserRegisterBindingModel;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Service;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final UserRepository userRepository;
+
     private final ModelMapper modelMapper;
+
     private final PasswordEncoder passwordEncoder;
     private final LoggedUser loggedUser;
 
@@ -28,31 +31,27 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public void register(UserRegisterBindingModel userRegisterBindingModel) {
         User user = modelMapper.map(userRegisterBindingModel, User.class);
-        user.setPassword(passwordEncoder.encode(userRegisterBindingModel.getPassword()));
         userRepository.save(user);
     }
 
     @Override
-    public boolean login(UserLoginBindingModel userLoginBindingModel) {
+    public void login(UserLoginBindingModel userLoginBindingModel) throws LoginCredentialsException {
         String username = userLoginBindingModel.getUsername();
-        User user = this.userRepository.findByUsername(username);
 
-        if (user == null) {
-            throw new IllegalArgumentException("User with that username: " + username + " is not present");
+        User user = this.userRepository
+                .findByUsername(username)
+                .orElseThrow(() -> new LoginCredentialsException("User with username: [" + username + "] is not present"));
+
+        boolean passwordMatch = passwordEncoder.matches(userLoginBindingModel.getPassword(),
+                user.getPassword());
+
+        if (!passwordMatch){
+            throw new LoginCredentialsException("User entered incorrect password");
         }
 
-        boolean passwordMatch = passwordEncoder.matches(userLoginBindingModel.getPassword(), user.getPassword());
-
-        if (!passwordMatch) {
-            throw new IllegalArgumentException("User entered incorrect password");
-        }
-
-        loggedUser.setUsername(user.getUsername());
-        loggedUser.setEmail(user.getEmail());
-        loggedUser.setFullName(user.getFullName());
-        loggedUser.setLogged(true);
-
-        return passwordMatch;
+        loggedUser.setUsername(user.getUsername())
+                .setLogged(true)
+                .setRoles(user.getRoles());
     }
 
     @Override
