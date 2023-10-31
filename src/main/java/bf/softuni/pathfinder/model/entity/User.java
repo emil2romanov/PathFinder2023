@@ -29,71 +29,91 @@ public class User extends BaseEntity {
     @JoinTable(
             name = "users_roles",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "roles_id", referencedColumnName = "id")}
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
     private Set<Role> roles;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "level")
     private Level level;
 
     public User() {
         this.roles = new HashSet<>();
     }
 
-    public String getUsername() {
+    public String getUsername () {
+
         return username;
     }
 
-    public void setUsername(String username) {
+    public User setUsername (String username) {
+
         this.username = username;
+        return this;
     }
 
-    public String getPassword() {
+    public String getPassword () {
+
         return password;
     }
 
-    public void setPassword(String password) {
+    public User setPassword (String password) {
+
         this.password = password;
+        return this;
     }
 
-    public String getFullName() {
+    public String getFullName () {
+
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public User setFullName (String fullName) {
+
         this.fullName = fullName;
+        return this;
     }
 
-    public Integer getAge() {
+    public Integer getAge () {
+
         return age;
     }
 
-    public void setAge(Integer age) {
+    public User setAge (Integer age) {
+
         this.age = age;
+        return this;
     }
 
-    public String getEmail() {
+    public String getEmail () {
+
         return email;
     }
 
-    public void setEmail(String email) {
+    public User setEmail (String email) {
+
         this.email = email;
+        return this;
     }
 
-    public Set<Role> getRoles() {
+    public Set<Role> getRoles () {
+
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public User setRoles (Set<Role> roles) {
+
         this.roles = roles;
+        return this;
     }
 
-    public Level getLevel() {
+    public Level getLevel () {
+
         return level;
     }
 
-    public void setLevel(Level level) {
+    public User setLevel (Level level) {
+
         this.level = level;
+        return this;
     }
 }

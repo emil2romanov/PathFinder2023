@@ -1,5 +1,8 @@
 package bf.softuni.pathfinder.model.dto.binding;
 
+import bf.softuni.pathfinder.validation.annotations.PasswordMatch;
+import bf.softuni.pathfinder.validation.annotations.UniqueEmail;
+import bf.softuni.pathfinder.validation.annotations.UniqueUsername;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

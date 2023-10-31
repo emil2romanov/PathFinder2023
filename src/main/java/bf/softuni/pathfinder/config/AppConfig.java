@@ -1,14 +1,27 @@
 package bf.softuni.pathfinder.config;
 
+import bf.softuni.pathfinder.exceptions.LoginCredentialsException;
+import bf.softuni.pathfinder.model.dto.binding.AddRouteBindingModel;
+import bf.softuni.pathfinder.model.dto.binding.UserRegisterBindingModel;
+import bf.softuni.pathfinder.model.entity.Category;
+import bf.softuni.pathfinder.model.entity.Route;
 import bf.softuni.pathfinder.model.entity.User;
+import bf.softuni.pathfinder.model.enums.CategoryNames;
+import bf.softuni.pathfinder.model.enums.Level;
 import bf.softuni.pathfinder.repository.UserRepository;
+import bf.softuni.pathfinder.service.CategoryService;
+import bf.softuni.pathfinder.service.RoleService;
 import bf.softuni.pathfinder.service.session.LoggedUser;
+import org.modelmapper.Conditions;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.Provider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.Set;
 
 @Configuration
 public class AppConfig {
