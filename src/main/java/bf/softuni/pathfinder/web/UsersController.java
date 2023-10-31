@@ -1,10 +1,15 @@
 package bf.softuni.pathfinder.web;
 
+import bf.softuni.pathfinder.exceptions.LoginCredentialsException;
 import bf.softuni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import bf.softuni.pathfinder.model.dto.binding.UserRegisterBindingModel;
+import bf.softuni.pathfinder.model.dto.view.UserProfileViewModel;
 import bf.softuni.pathfinder.service.AuthenticationService;
 import bf.softuni.pathfinder.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
