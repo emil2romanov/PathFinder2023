@@ -4,18 +4,13 @@ import bf.softuni.pathfinder.exceptions.RouteNotFoundException;
 import bf.softuni.pathfinder.model.dto.binding.AddRouteBindingModel;
 import bf.softuni.pathfinder.model.dto.view.RouteDetailsViewModel;
 import bf.softuni.pathfinder.model.dto.view.RouteViewModel;
-import bf.softuni.pathfinder.model.entity.Category;
 import bf.softuni.pathfinder.model.entity.Route;
-import bf.softuni.pathfinder.model.entity.User;
-import bf.softuni.pathfinder.repository.CategoryRepository;
 import bf.softuni.pathfinder.repository.RouteRepository;
 import bf.softuni.pathfinder.service.RouteService;
-import bf.softuni.pathfinder.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
