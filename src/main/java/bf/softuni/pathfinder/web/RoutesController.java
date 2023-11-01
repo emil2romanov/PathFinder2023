@@ -24,6 +24,7 @@ public class RoutesController {
 
     @Value("${binding-result-package}")
     private String bindingResultPath;
+
     private static final String DOT = ".";
 
     private final RouteService routeService;
