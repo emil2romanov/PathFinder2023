@@ -18,7 +18,7 @@ public @interface FileAnnotation {
 
     String[] contentTypes();
 
-    String message() default "{}";
+    String message() default "{user.password-match}";
 
     Class<?>[] groups() default { };
 
