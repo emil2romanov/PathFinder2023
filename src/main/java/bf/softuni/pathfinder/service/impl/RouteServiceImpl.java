@@ -7,22 +7,29 @@ import bf.softuni.pathfinder.model.dto.view.RouteViewModel;
 import bf.softuni.pathfinder.model.entity.Route;
 import bf.softuni.pathfinder.repository.RouteRepository;
 import bf.softuni.pathfinder.service.RouteService;
+import bf.softuni.pathfinder.service.session.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class RouteServiceImpl implements RouteService {
+
+    private static final String BASE_GPX_COORDINATES_PATH = ".\\src\\main\\java\\resources\\coordinates\\";
+
     private final RouteRepository routeRepository;
     private final ModelMapper modelMapper;
+    private final LoggedUser loggedUser;
 
     public RouteServiceImpl(RouteRepository routeRepository,
-                            ModelMapper modelMapper) {
+                            ModelMapper modelMapper, LoggedUser loggedUser) {
         this.routeRepository = routeRepository;
         this.modelMapper = modelMapper;
+        this.loggedUser = loggedUser;
     }
 
     @Override
@@ -37,6 +44,8 @@ public class RouteServiceImpl implements RouteService {
 
         Route route = modelMapper.map(addRouteBindingModel, Route.class);
 
+        String filePath = getFilePath(route.getName());
+
         String regex = "v=(.*)";
         Pattern compile = Pattern.compile(regex);
 
@@ -49,6 +58,15 @@ public class RouteServiceImpl implements RouteService {
         System.out.println();
 
         routeRepository.save(route);
+    }
+
+    private String getFilePath(String name) {
+        String pathPattern = "%s\\%s_%s.xml";
+
+        return String.format(
+                loggedUser.getUsername(),
+                name,
+                UUID.randomUUID());
     }
 
     @Override
