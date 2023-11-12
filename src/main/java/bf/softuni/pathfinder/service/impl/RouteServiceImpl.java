@@ -10,6 +10,7 @@ import bf.softuni.pathfinder.service.RouteService;
 import bf.softuni.pathfinder.service.session.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,32 +50,30 @@ public class RouteServiceImpl implements RouteService {
         Route route = modelMapper.map(addRouteBindingModel, Route.class);
 
         String filePath = getFilePath(route.getName());
+        boolean isUploaded = uploadGpxCoordinates(addRouteBindingModel.getGpxCoordinates(), filePath);
 
-        try {
-            File file = new File(BASE_GPX_COORDINATES_PATH + filePath);
-            file.getParentFile().mkdirs();
-            file.createNewFile();
-
-            OutputStream outputStream = new FileOutputStream(file);
-            outputStream.write(addRouteBindingModel.getGpxCoordinates().getBytes());
+        if (isUploaded) {
             route.setGpxCoordinates(filePath);
+        }
 
+        routeRepository.save(route);
+    }
+
+    private boolean uploadGpxCoordinates(MultipartFile file, String filePath) {
+        try {
+            File newFile = new File(BASE_GPX_COORDINATES_PATH + filePath);
+            newFile.getParentFile().mkdirs();
+            newFile.createNewFile();
+
+            OutputStream outputStream = new FileOutputStream(newFile);
+            outputStream.write(file.getBytes());
+
+            return true;
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
-        String regex = "v=(.*)";
-        Pattern compile = Pattern.compile(regex);
-
-        Matcher matcher = compile.matcher(addRouteBindingModel.getVideoUrl());
-        if (matcher.find()) {
-            String url = matcher.group(1);
-            route.setVideoUrl(url);
-        }
-
-        System.out.println();
-
-        routeRepository.save(route);
+        return false;
     }
 
     @Override
