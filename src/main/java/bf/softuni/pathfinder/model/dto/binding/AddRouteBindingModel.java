@@ -3,6 +3,7 @@ package bf.softuni.pathfinder.model.dto.binding;
 import bf.softuni.pathfinder.model.entity.User;
 import bf.softuni.pathfinder.model.enums.CategoryNames;
 import bf.softuni.pathfinder.model.enums.Level;
+import bf.softuni.pathfinder.validation.annotations.FileAnnotation;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +18,7 @@ public class AddRouteBindingModel {
     @Size(min = 5, message = "Description length must be more than 5 characters")
     private String description;
 
-    //@FileAnnotation(contentTypes = "text/xml")
+    @FileAnnotation(contentTypes = "text/xml")
     private MultipartFile gpxCoordinates;
 
     private Level level;
